@@ -3,22 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {OrderQueryComponent} from './order-query/order-query.component'
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-import {MatInputModule} from '@angular/material/input';
+import { XButtonModule } from '@ng-nest/ui/button';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrderQueryComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule
+    XButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
