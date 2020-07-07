@@ -1,10 +1,13 @@
 :host {
-    height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    p > x-button:not(:first-child) {
-      margin-left: 1rem;
-    }
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  x-row > x-col {
+    width: 15rem;
   }
+  x-row:not(:first-child) {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,12 @@
+<h1>欢迎</h1>
+<x-row>
+  <x-col>
+    <x-input [(ngModel)]="phone" icon="eao-smartphone" iconLayout="left" maxlength="11"></x-input>
+  </x-col>
+</x-row>
+<x-row>
+  <x-col>
+    <x-button (click)="query()" type="primary">查询</x-button>
+  </x-col>
+</x-row>
+<app-query-result *ngIf="resultData"></app-query-result>
