@@ -6,12 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  phone:string = '';
-
-  resultData 
-
-  query():void {
-    window.alert(this.phone);
-  }
 }

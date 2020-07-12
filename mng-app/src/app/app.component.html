@@ -1,0 +1,14 @@
+<x-container>
+  <x-header>Header</x-header>
+  <x-container>
+    <x-aside>
+      <x-avatar size="big" [src]=""></x-avatar>
+      <x-menu [data]="menu_data" layout="column" (nodeClick)="itemClick($event)"> </x-menu>
+    </x-aside>
+    <x-main>
+
+      <router-outlet></router-outlet>
+
+    </x-main>
+  </x-container>
+</x-container>
