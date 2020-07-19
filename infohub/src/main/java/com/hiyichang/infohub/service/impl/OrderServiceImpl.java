@@ -2,14 +2,14 @@ package com.hiyichang.infohub.service.impl;
 
 import com.hiyichang.infohub.common.pageable.PageResult;
 import com.hiyichang.infohub.common.pageable.Pageable;
-import com.hiyichang.infohub.entity.Employee;
-import com.hiyichang.infohub.service.EmployeeService;
+import com.hiyichang.infohub.entity.Order;
+import com.hiyichang.infohub.service.OrderService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class OrderServiceImpl implements OrderService {
     @Override
-    public int save(Employee employee) {
+    public int save(Order order) {
         return 0;
     }
 
@@ -19,12 +19,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public int update(Employee employee) {
-        return 0;
+    public PageResult<Order> page(Order order, Pageable pageable) {
+        return null;
     }
 
     @Override
-    public PageResult<Employee> page(Employee employee, Pageable pageable) {
-        return null;
+    public int update(Order order) {
+        return 0;
     }
 }
