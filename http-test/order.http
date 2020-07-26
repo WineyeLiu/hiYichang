@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:8080
+
+### get
+GET {{baseUrl}}/order/page
+
+
+### save
+POST {{baseUrl}}/order
+Content-Type: application/json
+
+{
+    "customerId": 13,
+    "orderDescription": "test1",
+    "price": 120000
+}
+
+### 
+DELETE {{baseUrl}}/order/8
+
+###
+GET {{baseUrl}}/order/page?index=2&size=5
+
+### 
+PATCH {{baseUrl}}/order
+Content-Type: application/json
+
+{
+    "id": 9,
+    "customerId": 13,
+    "orderDescription": "test11111-patch",
+    "price": 1200001
+}
+
+
+# test ok !

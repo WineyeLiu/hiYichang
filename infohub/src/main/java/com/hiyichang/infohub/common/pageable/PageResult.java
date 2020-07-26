@@ -9,9 +9,9 @@ public class PageResult<T> {
 
     private int index;
 
-    private int total;
+    private long total;
 
-    public PageResult(List<T> data, Pageable pageable, int total) {
+    public PageResult(List<T> data, Pageable pageable, long total) {
         this.data = data;
         this.index = pageable.getIndex();
         this.size = pageable.getSize();
@@ -30,7 +30,7 @@ public class PageResult<T> {
         return index;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 }

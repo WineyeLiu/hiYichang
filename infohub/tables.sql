@@ -35,7 +35,7 @@ create table employee (
 
 create table procedure_step (
 	id bigint(20) not null primary key auto_increment,
-	`order` int(11) not null,
+	order_id bigint(20) not null,
 	name varchar(256) not null comment 'stage name',
 	remark varchar(1024),
 	finish_datetime datetime,

@@ -292,8 +292,8 @@ public class ProcedureStepExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderEqualTo(Integer value) {
-            addCriterion("order =", value, "order");
+        public Criteria andOrderEqualTo(Long value) {
+            addCriterion("order_id =", value, "order");
             return (Criteria) this;
         }
 

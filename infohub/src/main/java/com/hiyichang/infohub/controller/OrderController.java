@@ -19,8 +19,8 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping
-    public Success<Integer> save(Order order) {
+    @PostMapping(consumes = "application/json")
+    public Success<Integer> save(@RequestBody Order order) {
         int result = orderService.save(order);
         Success<Integer> success = new Success<>();
         success.setData(result);
@@ -36,7 +36,7 @@ public class OrderController {
     }
 
     @PatchMapping()
-    public Success<Integer> patch(Order order) {
+    public Success<Integer> patch(@RequestBody Order order) {
         int result = orderService.update(order);
         Success<Integer> success = new Success<>();
         success.setData(result);
@@ -44,7 +44,13 @@ public class OrderController {
     }
 
     @GetMapping("/page")
-    public Success<PageResult<Order>> page(Order order, Pageable pageable) {
+    public Success<PageResult<Order>> page(@RequestParam int index, @RequestParam int size,
+                                           @RequestParam(required = false) String sort) {
+        Order order = new Order();
+        Pageable pageable = new Pageable();
+        pageable.setSize(size);
+        pageable.setIndex(index);
+        pageable.setSort(sort);
         PageResult<Order> result = orderService.page(order, pageable);
         Success<PageResult<Order>> success = new Success<>();
         success.setData(result);
