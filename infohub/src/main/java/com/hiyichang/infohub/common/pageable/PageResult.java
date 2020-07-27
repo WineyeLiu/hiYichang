@@ -1,0 +1,36 @@
+package com.hiyichang.infohub.common.pageable;
+
+import java.util.List;
+
+public class PageResult<T> {
+    private List<T> data;
+
+    private int size;
+
+    private int index;
+
+    private long total;
+
+    public PageResult(List<T> data, Pageable pageable, long total) {
+        this.data = data;
+        this.index = pageable.getIndex();
+        this.size = pageable.getSize();
+        this.total = total;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public long getTotal() {
+        return total;
+    }
+}

@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:8080/step
+
+GET {{baseUrl}}/oid_15
+
+
+### patch
+PATCH {{baseUrl}}
+Content-Type: application/json
+
+{
+      "id": 1,
+      "remark": "finish",
+      "finishDatetime": null,
+      "expectDeliverTime": null,
+      "operatorEmployeeId": 1,
+      "status": "1"
+}
+
+
+# test ok !
