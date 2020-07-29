@@ -14,6 +14,7 @@ import { XContainerModule } from '@ng-nest/ui/container';
 import { XAvatarModule } from '@ng-nest/ui/avatar';
 import { XMenuModule } from '@ng-nest/ui/menu';
 import { XTableModule } from '@ng-nest/ui/table';
+import { XLinkModule } from '@ng-nest/ui/link';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { XTableModule } from '@ng-nest/ui/table';
     XContainerModule,
     XAvatarModule,
     XMenuModule,
-    XTableModule
+    XTableModule,
+    XLinkModule
   ],
   providers: [],
   bootstrap: [AppComponent]

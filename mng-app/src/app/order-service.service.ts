@@ -24,15 +24,13 @@ export class OrderServiceService {
 
     let headers = new HttpHeaders();
     headers.append("Authorization", "s")
+    headers.append("Access-Control-Allow-Origin", "*");
 
-    let params = new HttpParams();
-    params.append("index", ''+index);
-    params.append("size", ''+size);
+    let params = new HttpParams()
+      .set('index', ''+index)
+      .set('size', ''+size);
 
-    return this.http.get<CommonResponse<Page<Order>>>(baseUrl + '/order/page', {
-      headers: headers,
-      params: params
-    });
+    return this.http.get<CommonResponse<Page<Order>>>(baseUrl + '/order/page', {params, headers});
   }
 
   updateOrder(order: Order):Observable<CommonResponse<Number>> {
@@ -43,10 +41,10 @@ export class OrderServiceService {
   }
 
   addOrder(order: Order):Observable<CommonResponse<Number>> {
-    let h = new HttpHeaders();
-    h.append("Content-Type", "application/json");
+    let headers = new HttpHeaders();
+    headers.append("Content-Type", "application/json");
     return this.http.post<CommonResponse<Number>>(baseUrl + '/order', order,
-      {headers: h}
+      {headers: headers}
     );
   }
 

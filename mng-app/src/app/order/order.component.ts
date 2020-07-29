@@ -17,22 +17,24 @@ export class OrderComponent implements OnInit {
     this.getData();
   }
 
+  auth = {};
   index = 1;
   size = 10;
   total = 0;
   data: Order[] = [];
   columns: XTableColumn[] = [
-    { id: 'index', label: '序号', flex: 0.5, left: 0, type: 'index' },
-    { id: 'name', label: '用户', flex: 1.5, sort: true },
-    { id: 'position', label: '职位', flex: 0.5, sort: true },
-    { id: 'email', label: '邮箱', flex: 1 },
-    { id: 'phone', label: '电话', flex: 1 },
-    { id: 'organization', label: '组织机构', flex: 1, sort: true }
+    { id: 'id', label: 'ID', flex: 0.4, left: 0, type: 'index' },
+    { id: 'customerId', label: '用户ID', flex: 0.4},
+    { id: 'orderDescription', label: '订单描述', flex: 0.5},
+    { id: 'status', label: '状态', flex: 0.5 },
+    { id: 'actions',label: '操作', flex: 0.5, action: true}
   ];
 
   getData():void {
     this.orderService.getOrderPageData(this.index, this.size).subscribe( x => {
         console.log(x.data)
+        this.data = x.data.data;
+        this.total = x.data.total;
       }
     )
   }
@@ -42,10 +44,6 @@ export class OrderComponent implements OnInit {
     this.getData();
   }
 
-  sortChange(sort: ) {
-    this.query.sort = sort;
-    this.getData();
+  action(type: string, item?: any) {
   }
-}
-
 }
