@@ -1,3 +1,7 @@
+<x-button icon="fto-save" type="primary" (click)="addOrderDialog('center')">
+  新建
+</x-button>
+
 <x-table
   [columns]="columns"
   [data]="data"
@@ -15,3 +19,13 @@
     <x-link icon="fto-trash-2" (click)="delOrder(row)" title="删除"></x-link>
   </div>
 </ng-template>
+
+<x-dialog
+  title="新增订单"
+  [(visible)]="visible"
+  [placement]="placement"
+  (cancel)="cancel()"
+  (confirm)="confirm()"
+>
+<x-form #form [controls]="controls"></x-form>
+</x-dialog> 

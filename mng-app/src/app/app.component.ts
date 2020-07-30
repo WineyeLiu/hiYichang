@@ -19,6 +19,7 @@ export class AppComponent {
   ];
 
   itemClick(menu: Menu) {
+    console.log(menu);
     this.router.navigate([menu.router], {relativeTo: this.activated})
   }
 }
