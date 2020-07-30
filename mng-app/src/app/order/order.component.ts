@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderServiceService } from '../order-service.service'
 import { Order } from '../entity/order';
-
+import { StepStatus, ProcedureStep } from '../entity/step'
 import { XTableColumn } from '@ng-nest/ui/table';
 import { XMessageBoxService, XMessageBoxAction } from '@ng-nest/ui/message-box';
 import { XPlace } from '@ng-nest/ui/core';
 import { XFormRow, XFormComponent } from '@ng-nest/ui/form';
 import { XSelectNode } from '@ng-nest/ui/select';
-import { XData, XQuery } from '@ng-nest/ui/core';
+import { XData, XQuery, XNumber } from '@ng-nest/ui/core';
 import { XMessageService } from '@ng-nest/ui/message';
+import { XStepsNode } from '@ng-nest/ui/steps';
 
 const SELECT_DATA: XData<XSelectNode> = [{id:1, label:'张山'}, {id:12, label:"李四"}]
 
@@ -35,7 +36,7 @@ export class OrderComponent implements OnInit {
   total = 0;
   data: Order[] = [];
   columns: XTableColumn[] = [
-    { id: 'id', label: 'ID', flex: 0.4, left: 0, type: 'index' },
+    { id: 'id', label: 'ID', flex: 0.4, left: 0},
     { id: 'customerId', label: '用户ID', flex: 0.4},
     { id: 'orderDescription', label: '订单描述', flex: 0.5},
     { id: 'status', label: '状态', flex: 0.5 },
@@ -83,10 +84,6 @@ export class OrderComponent implements OnInit {
 
   }
 
-  orderSteps(row: any) {
-    console.log('steps of ' + row.id);
-  }
-
   addOrderDialog(place: XPlace) {
     this.placement = place;
     this.visible = true;
@@ -131,5 +128,45 @@ export class OrderComponent implements OnInit {
       ]
     }
   ];
+
+
+  stepVisible:boolean;
+  stepPlacement:XPlace = "center";
+  stepConfirmText:string = "关闭";
+  orderSteps(row: any) {
+    console.log('steps of ' + row.id);
+    
+    this.orderService.getStepsByOrderId(row.id).subscribe((x) => {
+
+      console.log(x);
+      let tempdata: XStepsNode[] = [];
+      this.originData = x.data;
+      for (let index = 0; index < x.data.length; index++) {
+        const e = x.data[index];
+        if(+e.status == StepStatus.UNFINISHED) {
+          this.activeStep = index;
+          break;
+        }
+      }
+
+      x.data.forEach(element => {
+        let a:XStepsNode ={};
+        a.label = element.name;
+        a.description = element.remark;
+        a.status = +element.status == StepStatus.FINISHED? 'finish' : 'wait';
+        tempdata.push(a);
+        
+      });
+      this.stepData = tempdata;
+      this.stepData[this.activeStep].status = 'process';
+    }); 
+    console.log('---stepData---');
+    console.log(this.stepData);
+
+    this.stepVisible = true;
+  }
+  originData: ProcedureStep[];
+  stepData: XData<XStepsNode> = [];
+  activeStep: number = -1;
 
 }

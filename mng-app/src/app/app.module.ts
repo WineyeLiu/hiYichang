@@ -21,6 +21,7 @@ import { XButtonModule } from '@ng-nest/ui/button';
 import { XDialogModule } from '@ng-nest/ui/dialog';
 import { XFormModule } from '@ng-nest/ui/form';
 import { XPopconfirmModule } from '@ng-nest/ui/popconfirm';
+import { XStepsModule } from '@ng-nest/ui/steps';
 
 import { XMessageBoxService} from '@ng-nest/ui/message-box';
 import { XMessageService } from '@ng-nest/ui/message';
@@ -45,7 +46,8 @@ import { XMessageService } from '@ng-nest/ui/message';
     XButtonModule,
     XDialogModule,
     XFormModule,
-    XPopconfirmModule
+    XPopconfirmModule,
+    XStepsModule
   ],
   providers: [
     XMessageBoxService,

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Order } from './entity/order'
-import { Observable } from 'rxjs';
+import { ProcedureStep } from './entity/step';
+import { Observable, from } from 'rxjs';
 import { CommonResponse } from './entity/response'
 import { Page } from './entity/page'
 import { baseUrl} from './config'
@@ -53,5 +54,10 @@ export class OrderServiceService {
     return this.http.delete<CommonResponse<Number>>(baseUrl + '/order/'+id, {
       headers: headers
     });
+  }
+
+  getStepsByOrderId(id: number): Observable<CommonResponse<Array<ProcedureStep>>> {
+    let headers = new HttpHeaders();
+    return this.http.get<CommonResponse<Array<ProcedureStep>>>(baseUrl + '/step/oid_' + id, {headers});
   }
 }

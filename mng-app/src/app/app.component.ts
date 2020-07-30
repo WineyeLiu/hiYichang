@@ -15,7 +15,7 @@ export class AppComponent {
   menu_data = [
     { id: 1, label: '订单管理', icon: 'fto-gift', router: 'order'},
     { id: 2, label: '客户管理', icon: 'fto-package', router: 'customer'},
-    { id: 3, label: '系统管理', icon: 'fto-layers', router: 'system'}
+    { id: 3, label: '系统用户', icon: 'fto-layers', router: 'system'}
   ];
 
   itemClick(menu: Menu) {

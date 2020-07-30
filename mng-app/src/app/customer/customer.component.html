@@ -1,1 +1,14 @@
-<p>customer works!</p>
+<x-button icon="fto-save" type="primary" (click)="addOrderDialog('center')">
+    新建
+  </x-button>
+  
+  <x-table
+    [columns]="columns"
+    [data]="data"
+    [(index)]="index"
+    [(size)]="size"
+    [total]="total"
+    (indexChange)="indexChange($event)"
+    [bodyColumnTpl]="{ actions: actionsTpl }"
+  >
+  </x-table>

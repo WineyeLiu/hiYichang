@@ -15,7 +15,7 @@
 <ng-template #actionsTpl let-column="$column" let-row="$row">
   <div class="ad-table-actions">
     <x-link icon="fto-eye" (click)="orderSteps(row)" title="查看进度"></x-link>
-    <x-link icon="fto-edit" (click)="updateOrder(row)" title="修改"></x-link>
+    <!-- <x-link icon="fto-edit" (click)="updateOrder(row)" title="修改"></x-link> -->
     <x-link icon="fto-trash-2" (click)="delOrder(row)" title="删除"></x-link>
   </div>
 </ng-template>
@@ -29,3 +29,13 @@
 >
 <x-form #form [controls]="controls"></x-form>
 </x-dialog> 
+
+<x-dialog
+  title="订单进度"
+  [(visible)]="stepVisible"
+  [placement]="stepPlacement"
+  [confirmText]="stepConfirmText"
+  [showCancel]="false"
+>
+<x-steps [data]="stepData" [activatedIndex]="activeStep" layout="row"> </x-steps>
+</x-dialog>
