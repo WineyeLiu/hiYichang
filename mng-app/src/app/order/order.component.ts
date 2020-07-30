@@ -44,6 +44,16 @@ export class OrderComponent implements OnInit {
     this.getData();
   }
 
-  action(type: string, item?: any) {
+  delOrder(row: any) {
+    console.log('del ' + row.id);
   }
+
+  updateOrder(row: any) {
+    console.log('update ' + row.id);
+  }
+
+  orderSteps(row: any) {
+    console.log('steps of ' + row.id);
+  }
+
 }
