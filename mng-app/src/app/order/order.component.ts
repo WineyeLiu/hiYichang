@@ -95,8 +95,8 @@ export class OrderComponent implements OnInit {
     if (this.getValidStatus()) {
       this.orderService.addOrder(this.form.formGroup.value).subscribe((x) => {
         if (x.status == 0) {
-          this.xMessageService.success("新建订单成功");
           this.getData();
+          this.xMessageService.success("新建订单成功");
         } else {
           this.xMessageService.error("新增订单失败，服务器错误~")
         }

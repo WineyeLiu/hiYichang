@@ -1,1 +1,31 @@
-<div>sys works!</div>
+<x-button icon="fto-save" type="primary" (click)="addDialog()">
+    新建
+  </x-button>
+  
+  <x-table
+    [columns]="columns"
+    [data]="data"
+    [(index)]="index"
+    [(size)]="size"
+    [total]="total"
+    (indexChange)="indexChange($event)"
+    [bodyColumnTpl]="{ actions: actionsTpl }"
+  >
+  </x-table>
+
+  <ng-template #actionsTpl let-column="$column" let-row="$row">
+    <div class="ad-table-actions">
+      <!-- <x-link icon="fto-eye" (click)="orderSteps(row)" title="查看进度"></x-link> -->
+      <!-- <x-link icon="fto-edit" (click)="updateOrder(row)" title="修改"></x-link> -->
+      <x-link icon="fto-trash-2" (click)="delEmployee(row)" title="删除"></x-link>
+    </div>
+  </ng-template>
+
+  <x-dialog
+  title="新增订单"
+  [(visible)]="visible"
+  [placement]="placement"
+  (confirm)="confirm()"
+>
+<x-form #form [controls]="controls"></x-form>
+</x-dialog> 
